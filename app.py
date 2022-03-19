@@ -40,7 +40,7 @@ class pegawai(object):
 
     @staticmethod
     def initialize():
-        client = pymongo.MongoClient("mongodb+srv://root:dadasdudus12@cluster0.wc2gb.mongodb.net/myFirstDatabase?retryWrites=true&w=majority")
+        client = pymongo.MongoClient("your uri database / your local port")
         pegawai.Database = client['test']
         
 
