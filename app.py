@@ -138,7 +138,7 @@ def update():
         dataF = request.form
         session.pop('status')
         session.pop('id')
-        pegawai.update(dataF['nik'], dataF['nama'], dataF['jenis_kelamin'], dataF['golongan'], int(dataF['gapok']), int(dataF['tunjangan']), int(dataF['potongan']))
+        pegawai.update(dataF['nik'], dataF['nama'], dataF['jenis_kelamin'], dataF['golongan'], pegawai.getgolongan(dataF['golongan']), int(dataF['tunjangan']), int(dataF['potongan']))
         return f'<h1>Input Success</h1> <a href="/">data</a>'
     return render_template('update.html', form = pform)
 
