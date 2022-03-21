@@ -55,6 +55,17 @@ class pegawai(object):
         {"nik": nik},
         {"$set": {"nik": nik, 'nama' : nama, 'jenis_kelamin' : jns_kelamin, 'golongan' : Golongan, 'gapok' : Gapok, 'tunjangan' : tunjanagan, 'potongan' : potongan, 'total' : total}}
         )   
+    
+    def getgolongan(golongan):
+        if golongan == '1':
+            return 2000
+        elif golongan == '2':
+            return 3000
+        elif golongan == '3':
+            return 4000
+        elif golongan == '4':
+            return 5000
+        else: return 0
 
     def getid():
         return pegawai.Database['sample'].find_one({})
@@ -81,10 +92,9 @@ def home():
         nama = request.form['nama']
         jenis_kelasmin = request.form['jenis_kelamin']
         golongan = request.form['golongan']
-        gapok = int(request.form['gapok'])
         tunjangan = int(request.form['tunjangan'])
         potongan = int(request.form['potongan'])
-        data = pegawai.data(nik, nama, jenis_kelasmin, golongan, gapok, tunjangan, potongan)
+        data = pegawai.data(nik, nama, jenis_kelasmin, golongan, pegawai.getgolongan(golongan), tunjangan, potongan)
         pegawai.tambah(data)
         return f'<h1>Input Success</h1> <a href="/">data</a>'
     else:
